@@ -8,6 +8,7 @@ import React, {
   AppRegistry,
   Component,
   Image,
+  ListView,
   StyleSheet,
   Text,
   View
@@ -24,7 +25,10 @@ class AwesomeProject extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          movies: null,
+          dataSource: new ListView.DataSource ({
+              rowHasChanged: (row1, row2) => row1 !== row2
+          }),
+          loaded: false
       }
   }
   componentDidMount() {
@@ -35,7 +39,8 @@ class AwesomeProject extends Component {
         .then((response) => response.json())
         .then((responseData) => {
             this.setState({
-                movies:  responseData.movies,
+                dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
+                loaded: true,
             });
         })
         .done();
@@ -44,8 +49,13 @@ class AwesomeProject extends Component {
     if(!this.state.movies)
         return this.renderLoadingView();
 
-    var movie = this.state.movies[0];
-    return this.renderMovie(movie);
+    return (
+        <ListView>
+            dataSource={this.state.dataSource}
+            renderRow={this.renderMovie}
+            style={styles.listView}
+        </>
+    )
   }
   renderLoadingView() {
       return (
@@ -95,6 +105,10 @@ const styles = StyleSheet.create({
     width: 53,
     height: 81,
   },
+  listView: {
+    paddingTop: 20,
+    backgroundColor: '#F5FCFF',
+  }
 });
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
