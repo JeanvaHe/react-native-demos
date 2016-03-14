@@ -46,15 +46,15 @@ class AwesomeProject extends Component {
         .done();
   }
   render() {
-    if(!this.state.movies)
+    if(!this.state.loaded)
         return this.renderLoadingView();
 
     return (
-        <ListView>
+        <ListView
             dataSource={this.state.dataSource}
             renderRow={this.renderMovie}
             style={styles.listView}
-        </>
+        />
     )
   }
   renderLoadingView() {
