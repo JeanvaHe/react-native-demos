@@ -24,8 +24,7 @@
 
 
 
-var ParseTest = require('./ParseUsage');
-
+var LoginScreen = require('./login/LoginScreen');
 var Parse = require('parse/react-native');
 var React = require('React');
 
@@ -58,7 +57,7 @@ function setup(): ReactClass<{}> {
     }
     render() {
       return (
-          <ParseTest />
+          <LoginScreen />
       );
     }
   }
