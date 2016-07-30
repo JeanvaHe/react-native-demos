@@ -1,0 +1,37 @@
+{
+  "name": "SampleAppMovies",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "babel-cli": "~6.10.1",
+
+
+
+
+
+
+
+
+
+
+    "parse": "~1.8.2",
+    "react": "15.2.1",
+    "react-native": "^0.30.0",
+
+
+
+
+
+    "react-native-linear-gradient": "~1.5.0"
+  },
+  "devDependencies": {
+    "babel-polyfill": "~6.9.1"
+  },
+  "engines": {
+    "node": ">=5.0",
+    "npm": ">=3.0"
+  }
+}
