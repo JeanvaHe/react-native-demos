@@ -27,8 +27,8 @@ const React = require('react');
 const {StyleSheet} = require('react-native');
 const F8Button = require('F8Button');
 
-//const { logInWithFacebook } = require('../actions');
-//const {connect} = require('react-redux');
+const { logInWithFacebook } = require('../actions');
+const {connect} = require('react-redux');
 
 class LoginButton extends React.Component {
   props: {
@@ -82,7 +82,7 @@ class LoginButton extends React.Component {
     this.setState({isLoading: true});
     try {
       await Promise.race([
-        //dispatch(logInWithFacebook(this.props.source)),
+        dispatch(logInWithFacebook(this.props.source)),
         timeout(15000),
       ]);
     } catch (e) {
@@ -113,4 +113,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = LoginButton;
+module.exports = connect()(LoginButton);

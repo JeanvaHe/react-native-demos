@@ -36,8 +36,8 @@ var { Text } = require('F8Text');
 var LoginButton = require('../common/LoginButton');
 var TouchableOpacity = require('TouchableOpacity');
 
-//var { skipLogin } = require('../actions');
-//var { connect } = require('react-redux');
+var { skipLogin } = require('../actions');
+var { connect } = require('react-redux');
 
 class LoginScreen extends React.Component {
   state = {
@@ -58,8 +58,7 @@ class LoginScreen extends React.Component {
           accessibilityLabel="Skip login"
           accessibilityTraits="button"
           style={styles.skip}
-
-          >
+          onPress={() => this.props.dispatch(skipLogin())}>
           <Animated.Image
             style={this.fadeIn(2800)}
             source={require('./img/x.png')}
@@ -167,4 +166,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = LoginScreen;
+module.exports = connect()(LoginScreen);
